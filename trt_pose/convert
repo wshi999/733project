@@ -1,0 +1,1 @@
+atc --framework=5 --model="model/trt_pose.onnx" --output=trt_with_paf --soc_version=Ascend310 
