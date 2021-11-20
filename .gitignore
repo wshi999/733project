@@ -1,2 +1,4 @@
 model/
 **/__pycache__/
+fusion_result.json
+core
