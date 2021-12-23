@@ -13,7 +13,7 @@ from acllite.acllite_model import AclLiteModel
 IMG_PATH = "images/hand4.jpg"
 MODEL_PATH = "model/trt.om"
 threshold = 0.03  # 0.1, 0.3
-HEATMAP = False
+HEATMAP = True
 
 acl_resource = AclLiteResource()
 acl_resource.init()
@@ -48,11 +48,11 @@ ori_img = cv2.imread(IMG_PATH)
 
 cmap, paf = model.execute([img])
 
-with open("trt_pose/tmp/hand4", "wb") as f:
-    np.save(f, cmap[0])
-    np.save(f, paf[0])
+# with open("trt_pose/tmp/hand4", "wb") as f:
+#     np.save(f, cmap[0])
+#     np.save(f, paf[0])
 
-input("")
+# input("")
 
 heatmap = cmap[0]
 if HEATMAP:
