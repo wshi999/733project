@@ -152,9 +152,10 @@ def draw_handpose(canvas, all_hand_peaks, show_number=False):
 
     for peaks in all_hand_peaks:
         for ie, e in enumerate(edges):
-            if np.sum(np.all(peaks[e], axis=1) == 0) == 0:
-                x1, y1 = peaks[e[0]]
-                x2, y2 = peaks[e[1]]
+            # if np.sum(np.all(peaks[ie], axis=1) == 0) == 0:
+            if True:
+                x1, y1 = all_hand_peaks[e[0]]
+                x2, y2 = all_hand_peaks[e[1]]
                 ax.plot(
                     [x1, x2],
                     [y1, y2],
@@ -163,7 +164,7 @@ def draw_handpose(canvas, all_hand_peaks, show_number=False):
                     ),
                 )
 
-        for i, keyponit in enumerate(peaks):
+        for i, keyponit in enumerate(all_hand_peaks):
             x, y = keyponit
             ax.plot(x, y, "r.")
             if show_number:
