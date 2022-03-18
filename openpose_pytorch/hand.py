@@ -113,7 +113,7 @@ if __name__ == "__main__":
     hand_estimation = Hand("model/hand_pose_model.pth")
 
     # test_image = '../images/hand.jpg'
-    test_image = "images/hand3.jpg"
+    test_image = "images/ski_hand.jpg"
     oriImg = cv2.imread(test_image)  # B,G,R order
     peaks = hand_estimation(oriImg)
     canvas = util.draw_handpose(oriImg, peaks, True)

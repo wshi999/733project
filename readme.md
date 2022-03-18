@@ -1,0 +1,2 @@
+- run `python openpose_pytorch/hand.py`
+- run `python trt_pose/run.py`
