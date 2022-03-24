@@ -10,7 +10,7 @@ def resnet18_baseline_att(
     num_upsample=3,
     num_flat=0,
 ):
-    resnet = torchvision.models.resnet18(pretrained=pretrained)
+    resnet = torchvision.models.resnet18(pretrained=False)
     return _resnet_pose_att(
         cmap_channels,
         paf_channels,
