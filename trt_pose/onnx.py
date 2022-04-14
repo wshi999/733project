@@ -16,7 +16,8 @@ MODELPATH = "model/hand_pose_resnet18_att_244_244.pth"
 IMG = "images/hand.jpg"
 threshold = 0.03  # 0.1, 0.3
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 with open("trt_pose/hand_pose.json", "r") as f:
     hand_pose = json.load(f)
@@ -41,6 +42,9 @@ model = resnet18_baseline_att(num_parts, 2 * num_links).eval()
 model.load_state_dict(torch.load(MODELPATH, map_location=torch.device("cpu")))
 
 model[0].resnet.avgpool = nn.AvgPool2d(224)
+model[1].paf_conv = nn.Identity()
+model[1].paf_att = nn.Identity()
+model[1].paf_up = nn.Identity()
 
 ori_img = cv2.imread(IMG)
 ori_img = cv2.resize(ori_img, (224, 224), interpolation=cv2.INTER_AREA)
@@ -52,7 +56,7 @@ cmap, paf = model(img)
 torch.onnx.export(
     model,
     img,
-    "model/trt_pose.onnx",
+    "model/trt_pose_purne.onnx",
     export_params=True,
     output_names=["cmap", "paf"],
     input_names=["image"],
