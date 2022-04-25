@@ -48,11 +48,13 @@ ori_img = cv2.imread(IMG_PATH)
 
 cmap, paf = model.execute([img])
 
+
 # with open("trt_pose/tmp/hand4", "wb") as f:
 #     np.save(f, cmap[0])
 #     np.save(f, paf[0])
 
 # input("")
+
 
 heatmap = cmap[0]
 if HEATMAP:
