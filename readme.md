@@ -1,6 +1,7 @@
 - run `python openpose_pytorch/hand.py` to run on GPU
 - run `python trt_pose/run.py`to run on GPU
 - run `python trt_pose/demo_run.py`to run on atlas 200 dk
+- put your input video in `images/`
 
 - Download models
   - [hand_pose_model.pth ](https://drive.google.com/file/d/1xaVn0ToahfPJrGmZN9FTpP6l4wSMGvbI/view?usp=sharing)
